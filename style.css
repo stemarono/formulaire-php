@@ -74,8 +74,16 @@ button a:hover{
 }
 .cadre a{
     text-decoration: none;
-    list-style-type: none;   
+    list-style-type: none; 
+    border:1px solid #f7c164;  
+    width:100px;
+    margin-left:180px;
+    border-radius: 5px;
+    
 } 
+.cadre a:hover{
+    border-color:#649af7;
+}
 
 /* SEND-MESSAGE.PHP*/
 
