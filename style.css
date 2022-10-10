@@ -1,3 +1,6 @@
+/*INDEX.PHP */
+
+
 .form-control{
     display: flex;
     flex-flow: column;
@@ -19,24 +22,79 @@ label{
 input{
     height: 30px;
 }
+button a {
+    list-style-type: none;
+    text-decoration: none;
+    color:#2153a9;
+    background-color: #f7c164;
+}
 
-
-button{
+button {
     margin-top:15px;
     font-size:1.2rem;
     border-radius: 5px;
     border-color: #649af7 ;
     background-color: #f7c164;
-    color:#2153a9;
     transition-property: background-color, color;
     transition-duration: 0.3s;
     transition-timing-function: linear;
     transition-delay: 0;
 
 }
-
 button:hover{
     background-color: #2153a9;
     color:#f7c164;
+}  
+
+button a:hover{
+    background-color: #2153a9;
+    color:#f7c164;
+
 }
- 
+.cadre{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px solid #649af7;
+    border-radius: 5px;;
+    margin-bottom:20px;
+    width:450px;
+    text-align: center;
+    padding: 20px;
+    background-color: #649af7;
+    color:#fafafa;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    transition-delay: 0;
+}
+.cadre:hover{
+    background-color: #f7c164;
+    border-color:#f7c164;
+}
+.cadre a{
+    text-decoration: none;
+    list-style-type: none;   
+} 
+
+/* SEND-MESSAGE.PHP*/
+
+.result{
+    
+    display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-top:250px;
+   background-color: #e2e6b0;
+}
+ .result h2,.result h3{
+    font-size: 50px;
+    color:#4335ed;
+    
+ }
+ .result h3{
+    color:#4335ed;
+    font-size:40px;
+ }
+

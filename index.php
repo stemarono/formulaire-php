@@ -14,19 +14,20 @@ $error=[
     'password'=>'',
 ];
 
-$information=[];
+$users=[];
 
 if(file_exists($filename)){
     $file = file_get_contents($filename);
-    $information = json_decode($file,true);
+    $users = json_decode($file,true);
+    // print_r($information);
  }
 
 if($_SERVER["REQUEST_METHOD"]== "POST"){
 
-  require_once "ajout-information.php";
+  require_once "add-information.php";
       
     }
-    
+
 ?>
 
 </pre>
@@ -45,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
 <body>
     <form action="/" method="POST" class="form">
         <div class="form-control" >
-        <?php foreach($information as $firstname)?>
+        
             <label for="firstname">prénom :</label>
             <input type="text" name="firstname" id="firstname" placeholder="Votre prénom">
         </div>
@@ -54,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
             <p class="error"><?=$error['firstname']?></p>
         </div>
         <div class="form-control">
-        <?php foreach($information as $lastname)?>
+        
             <label for="lastname">nom :</label>
             <input type="text" name="lastname" id="lastname" placeholder="Votre nom">
         </div>
@@ -63,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
             <p class="error"><?=$error['lastname']?></p>
         </div>
         <div class="form-control">
-        <?php foreach($information as $mail)?>
+       
             <label for="mail">Votre adresse mail :</label>
             <input type="email" name="mail" id="mail"placeholder="Votre adresse mail">
         </div>
@@ -72,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
             <p class="error"><?=$error['mail']?></p>
         </div>
         <div class="form-control">
-        <?php foreach($information as $password)?>
+        
             <label for="password">votre mot de passe :</label>
             <input type="password" name="password" id="password" placeholder ="votre mot de passe">
         </div>
@@ -80,14 +81,25 @@ if($_SERVER["REQUEST_METHOD"]== "POST"){
             <?php if($error)?>
             <p class="error"><?=$error['password']?></p>
         </div>
-        
-    <!-- <input type ="submit" value="Valider"> - autre façon de faire un bouton  -->
-        <form action="/valid-information.php" method="POST">
-            <input type="hidden"name="id" value="<?=$information['id']?>">
-            <input type="hidden"name="action" value="envoi">
-            <button type="submit">Valider</button>
-            <?= $information['register'] ? 'vous êtes enregistré(e)':'veuillez réessayer'?>
-        </form>
+        <button type="submit"><a href="/send-message.php">Valider</a></button>       
     </form>
+     <!-- <input type ="submit" value="Valider"> - autre façon de faire un bouton  -->
+    <!-- <form action="/valid-information.php" method="POST">
+        <input type="hidden"name="id" value="<?= $users['id'] ?? ''?>">
+        <input type="hidden"name="action" value="envoi">
+    </form> -->
+
+    <section>
+
+    <h2>afficher les utilisateurs</h2>
+    <?php foreach ($users as $user) : ?>
+        <div class="cadre">
+            <h3>Prénom : <?= $user['firstname'] ?></h3>
+            <h3>Nom : <?= $user['lastname']?></h3>
+            <h3>Adresse mail : <?= $user['mail']?></h3>
+            <a href="/send-message.php?id=<?= $user['id']?>">détails</a>
+        </div>
+    <?php endforeach; ?>
+    </section>
 </body>
 </html>

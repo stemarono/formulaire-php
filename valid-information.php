@@ -12,18 +12,14 @@ $id = $_POST['id'] ?? '';
 $action = $_POST['action'] ?? '';
 
 if($id & $action){
-    $information= json_decode(file_get_contents($filename, true))?? [];
-        $edit= array_search($id, array_column($information, 'id'));
-    if($action==='envoi') $information[$edit]['register']=!$information[$edit]['register'];
-   
-   
+    $users= json_decode(file_get_contents($filename, true))?? [];
+    $edit= array_search($id, array_column($users, 'id'));
+    if($action==='envoi') $users[$edit]['register']=!$users[$edit]['register'];
+      
 };
 
-if($action==='envoi' ){
-    echo "vous êtes bien enregistré(e)";
-}else {
-    echo"veuillez réessayer";
-};  
+
+
     
 
 
